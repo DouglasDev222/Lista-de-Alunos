@@ -1,4 +1,6 @@
 
+
+
 function CadAluno(nome, nascimento, telefone, deficiencia, observacao){
     var tabela = document.getElementById("tabelaalunos")
     var numLinhas = tabela.rows.length

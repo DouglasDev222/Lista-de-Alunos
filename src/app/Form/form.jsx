@@ -1,21 +1,34 @@
 import React from "react";
 import "./form.css"
-import "../apptabela.js"
 
 function Form() {
+
+    const [nome, setNome] = React.useState('')
+    const [nasc, setNasc] = React.useState('')
     
+    const onSubmit = (e) => {
+        e.preventDefault()
+        const data = {
+            alunos : [
+                {nome: nome, nasc: nasc}
+            ]
+        }
+        console.log(data)
+    }
+    
+
     return <div className="container form">
         <center><h1>Lista de Alunos</h1></center>
-        <form>
+        <form onSubmit={onSubmit}>
             {/*Nome*/}
             <div className="form-group">
                 <label>Nome: </label>
-                <input type="text" name="txtNome" className="form-control" placeholder="Nome do Aluno"/>
+                <input type="text" className="form-control" placeholder="Nome do Aluno" value={nome} onChange={(e) => setNome(e.target.value)}/>
             </div>
             {/*Nascimento*/}
             <div className="form-group ">
                 <label >Data de Nascimento: </label>
-                <input type="text" name="txtNasc" className="form-control" placeholder="Ex. 05/05/2010"/>
+                <input type="text" name="txtNasc" className="form-control" placeholder="Ex. 05/05/2010" value={nasc} onChange={(e) => setNasc(e.target.value)}/>
             </div>
             {/*Série*/}
             <div className="form-group col-9 displayinline">
@@ -62,9 +75,9 @@ function Form() {
                 <label>Observação: </label>
                 <textarea name="txtobs" className="form-control"></textarea>
             </div>
-            
+            <button className="btn btn-primary">Adicionar aluno</button>
         </form>
-        <button className="btn btn-primary" onClick={{/*CadAluno(txtNome.value, txtNasc.value, txtTel.value, txtdef.value, txtobs.value)*/}}>Adicionar aluno</button>
+        
     </div>
 }
 export default Form
